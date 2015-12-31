@@ -17,6 +17,6 @@ def craft_string(key):
     >>> craft_string('Watch this space')
     '*2\r\n$3\r\nINC\r\n$16\r\nWatch this space\r\n'
     """
-    strings = []
+    strings = ['INC', key]
     l = [ make_string(s) for s in strings ]
     return make_array(l)
