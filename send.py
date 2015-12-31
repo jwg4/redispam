@@ -1,3 +1,4 @@
+import random
 import socket
 
 def make_string(s):
@@ -34,5 +35,15 @@ def send_command(host, key):
     s.close()
     return True
 
+def get_random_ip():
+    quad = [ str(random.randint(0, 255)) for i in [1, 2, 3, 4] ]
+    return ".".join(quad)
+
+def send_message(msg):
+    addr = get_random_ip()
+    r = send_command(addr, msg)
+    status = 'Success' if r else 'Failure'
+    print '%s : %s' % (addr, status)
+
 if __name__ == '__main__':
-    send_command('127.0.0.1', 'To advertise here, call 1-800 RED SPAM')
+    send_message('To advertise here, call 1-800 RED SPAM')
