@@ -46,4 +46,5 @@ def send_message(msg):
     print '%s : %s' % (addr, status)
 
 if __name__ == '__main__':
-    send_message('To advertise here, call 1-800 RED SPAM')
+    for x in range(1000):
+        send_message('YOUR MESSAGE HERE. redispam@gmail.com')
