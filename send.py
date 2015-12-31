@@ -25,10 +25,14 @@ def craft_string(key):
 
 def send_command(host, key):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    s.connect((host, 6379))
+    try:
+        s.connect((host, 6379))
+    except socket.error:
+        return False
     msg = craft_string(key)
     s.send(msg)
     s.close()
+    return True
 
 if __name__ == '__main__':
     send_command('127.0.0.1', 'To advertise here, call 1-800 RED SPAM')
