@@ -13,6 +13,10 @@ def make_array(l):
     return ('*%d\r\n' % len(l)) + ''.join(l)
 
 def craft_string(key):
+    r"""
+    >>> craft_string('Watch this space')
+    '*2\r\n$3\r\nINC\r\n$16\r\nWatch this space\r\n'
+    """
     strings = []
     l = [ make_string(s) for s in strings ]
     return make_array(l)
