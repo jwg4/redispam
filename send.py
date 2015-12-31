@@ -1,3 +1,5 @@
+import socket
+
 def make_string(s):
     r"""
     >>> make_string('asdf')
@@ -20,3 +22,13 @@ def craft_string(key):
     strings = ['INC', key]
     l = [ make_string(s) for s in strings ]
     return make_array(l)
+
+def send_command(host, key):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((host, 6379))
+    msg = craft_string(key)
+    s.send(msg)
+    s.close()
+
+if __name__ == '__main__':
+    send_command('127.0.0.1', 'To advertise here, call 1-800 RED SPAM')
